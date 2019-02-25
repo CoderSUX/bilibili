@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<!-- 5. 接口地址
+公共路径：https://easy-mock.com/mock/5c1dfd98e8bfa547414a5278/bili
+| 接口名称   | 接口路径         | 备注             |
+| 首页导航   | /navList         |                  |
+| 首页轮播图 | /swiperList      |                  |
+| 视频列表   | /videosList      |                  |
+| 视频详情   | /videoDetail?id  | 需要带上视频的id |
+| 推荐视频   | /othersList?id   | 需要带上视频的id |
+| 评论列表   | /commentsList?id | 需要带上视频的id | -->
+
+<view class="main">
+  <!-- 公共头部 -->
+  <MYTitleView></MYTitleView>
+  <!-- 导航 -->
+  <scroll-view class='nav' scroll-x>
+    <view data-index="{{index}}" class='nav_item {{index===currentIndex ? "active" :""}}' wx:for="{{navList}}" wx:key="{{index}}" bindtap='activeNav'>{{item.text}}</view>
+  </scroll-view>
+  <!-- 轮播图 -->
+  <view class='slider'>
+    <swiper autoplay interval='3000' indicator-dots circular>
+      <swiper-item wx:for="{{swiperList}}" wx:key="{{index}}" >
+        <navigator>
+          <image mode='widthFix' src='{{item.imgSrc}}'></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 视频内容 -->
+  <view class='video-wrap'>
+    <navigator url='../detail/detail?id={{item.id}}' class='video-item' wx:for="{{videosList}}" wx:key="{{index}}">
+      <!-- 视频内容 -->
+      <view class='video-content'>
+        <image mode='widthFix' class='video-img' src='{{item.imgSrc}}'></image>
+        <!-- 视频信息 -->
+        <view class='video-info'>
+          <!-- 播放量 -->
+          <view class='play-wrap'>
+            <text class='play-count'>播放{{item.playCount}}</text>
+          </view>
+          <!-- 评论量 -->
+          <view class="comment-wrap">
+            <text class='comment-count'>评论{{item.commentCount}}</text>
+          </view>
+        </view>
+      </view> 
+
+      <!-- 视屏标题 -->
+      <view class='video-title'>
+        <text>{{item.desc}}</text>
+      </view>
+
+    </navigator>
+  </view>
+
+</view>

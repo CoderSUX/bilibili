@@ -1,0 +1,16 @@
+<view class="main">
+<!-- logo -->
+  <navigator class="logo" url='../../pages/index/index' open-type='reLaunch'>
+    <image class='logo-img' src='../../images/logo.jpg'></image>
+  </navigator>
+<!-- search -->
+  <view class='search' bindtap='search'>
+    <image class='search_img' src="../../images/search.jpg"></image>
+  </view>
+<!-- user -->
+  <view class='user' bindtap='changeUserIcon'>
+    <image class='user_img' src="{{tempFilePath}}"></image>
+  </view>
+<!-- download -->
+  <view class='download' bindtap='downloadApp'>下载 App</view>
+</view>

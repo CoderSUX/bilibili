@@ -1,0 +1,61 @@
+<view class="main">
+  <!-- 公共头部 -->
+  <MYTitleView></MYTitleView>
+  <!-- 视频详情 -->
+  <view class='video-detail-wrap'>
+    <video class='video-content' src='{{videoInfo.videoSrc}}' controls></video>
+    <view class='video-title'>{{videoInfo.videoTitle}}</view>
+    <view class='video-info'>
+      <text class='author'>{{videoInfo.author}}</text>
+      <text class='playCount'>{{videoInfo.playCount}}次观看</text>
+      <text class='commentCount'>{{videoInfo.commentCount}}弹幕</text>
+      <text class='date'>{{videoInfo.date}}</text>
+    </view>
+  </view>
+  <!-- 推荐视频 -->
+  <view class='other-wrap'>
+    <navigator class='other-video' wx:for="{{othersList}}" wx:key="{{index}}">
+      <image class='other-video-image' mode='widthFix' src='{{item.imgSrc}}'></image>
+      <view class='other-video-info'>
+        <view>
+          <text class='other-video-title'>{{item.title}}</text>
+        </view>
+        <view class='other-info'>
+          <text class='other-video-playMsg'>{{item.playMsg}}万次观看</text>
+          <text class='other-video-commentCount'>{{item.commentCount}}弹幕</text>
+        </view>
+        
+      </view>
+    </navigator>
+  </view>
+
+  <!-- 评论列表 -->
+  <view class='comment-wrap'>
+    <view class='comment-title'>
+      评论 ( {{commentData.commentTotalCount}} )
+    </view>
+    <view>
+      <view class='comment-item' wx:for="{{commentData.commentList}}" wx:key="{{index}}">
+        <!-- 头像 -->
+        <view class='user-icon'>
+          <image mode='widthFix' src='{{item.userIconSrc}}'></image>
+        </view>
+
+        
+        <view class="user-info">
+          <!-- 用户 -->
+          <view class='user-info-detail'>
+            <text class='user-name'>{{item.username}}</text>
+            <text class='comment-date'>{{item.commentDate}}</text>
+          </view>
+          <!-- 内容 -->
+          <view class='comment-info-title'>
+            {{item.commentInfo}}
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+</view>
